@@ -1,0 +1,13 @@
+# Exposed on port 8888 of the k3d load balancer (k3d cluster create -p 8888:8888@loadbalancer)
+apiVersion: v1
+kind: Service
+metadata:
+  name: wil-playground
+  namespace: dev
+spec:
+  type: LoadBalancer
+  selector:
+    app: wil-playground
+  ports:
+    - port: 8888
+      targetPort: 8888

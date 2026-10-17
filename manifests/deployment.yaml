@@ -1,0 +1,24 @@
+# Wil's playground application, version selected by the image tag (v1 or v2).
+# Argo CD deploys this file from the public GitHub repository.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wil-playground
+  namespace: dev
+  labels:
+    app: wil-playground
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wil-playground
+  template:
+    metadata:
+      labels:
+        app: wil-playground
+    spec:
+      containers:
+        - name: wil-playground
+          image: wil42/playground:v1
+          ports:
+            - containerPort: 8888
